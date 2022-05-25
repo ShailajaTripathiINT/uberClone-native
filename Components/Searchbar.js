@@ -12,8 +12,8 @@ export default function Searchbar() {
         style={styles.searchBorder}
         renderLeftButton={() => (
           <View style={styles.searchIcon}>
-            <Ionicons name="location-sharp" size={24} /> 
-         </View>
+            <Ionicons name="location-sharp" size={24} />
+          </View>
         )}
         renderRightButton={() => (
           <View style={styles.searchRight}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: 'center',
   },
-  antdesign:{
-    marginRight:6  
-  }
+  antdesign: {
+    marginRight: 6,
+  },
 });
