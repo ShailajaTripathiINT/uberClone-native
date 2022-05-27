@@ -1,4 +1,4 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import RestaurantImage from './RestaurantImage';
 import RestaurantInfo from './RestaurantInfo';
