@@ -1,20 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import HeaderButton from './HeaderButton';
 
-const HeaderTabs = () => {
-  const [activeTab, setActiveTab] = useState('Delivery');
+const HeaderTabs = (props) => {
+
   return (
     <View style={styles.HeaderButton}>
       <HeaderButton
         text="Delivery"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
       <HeaderButton
         text="Pickup"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={props.activeTab}
+        setActiveTab={props.setActiveTab}
       />
     </View>
   );
