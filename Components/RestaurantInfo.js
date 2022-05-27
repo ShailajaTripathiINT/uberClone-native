@@ -6,16 +6,12 @@ export default function RestaurantInfo(props) {
     <View style={styles.resturantImgView}>
       {/* left section */}
       <View>
-        <Text style={styles.resturantTitle}>
-{
-  props.name
-}
-        </Text>
+        <Text style={styles.resturantTitle}>{props.name}</Text>
         <Text style={styles.resturantTime}>30-45 min</Text>
       </View>
 
       {/*right section */}
-        
+
       <View style={styles.resturantRating}>
         <Text>{props.rating}</Text>
       </View>

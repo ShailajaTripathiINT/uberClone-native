@@ -16,9 +16,9 @@ export default function RestaurantImage(props) {
         style={styles.heartIcon}
         onPress={() => setIslike(!isLike)}>
         {isLike ? (
-          <MaterialCommunityIcons name="heart" size={25} color="red"/>
+          <MaterialCommunityIcons name="heart" size={25} color="red" />
         ) : (
-          <MaterialCommunityIcons name="heart-outline" size={25} color="#fff"/>
+          <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
         )}
       </TouchableOpacity>
 
