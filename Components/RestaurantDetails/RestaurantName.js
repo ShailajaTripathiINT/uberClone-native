@@ -1,16 +1,15 @@
 import { View, Text,StyleSheet } from 'react-native'
 import React from 'react'
 
-const RestaurantTitle = (props) => {
+const RestaurantName = (props) => {
   return (
     <View>
-      <Text style={styles.RestaurantTitle}>{props.title}</Text>
+      <Text style={styles.RestaurantTitle}>{props.name}</Text>
     </View>
   )
 }
 
-export default RestaurantTitle
-
+export default RestaurantName
 
 const styles = StyleSheet.create({
     RestaurantTitle:{
@@ -18,6 +17,5 @@ const styles = StyleSheet.create({
         fontWeight:'600',
         marginTop:10,
         marginHorizontal:15,
-
     }
 })

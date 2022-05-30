@@ -8,10 +8,12 @@ import RestaurantItems from '../Components/Home/RestaurantItems';
 import {localRestaurants} from '../Components/Home/RestaurantItems';
 import {Divider} from 'react-native-elements';
 
-const YELP_API_KEY =
-  'ipKA6BcqyQsxDzeWShMICf-disTX4I_aCR6-Wxm0_fpX3ozQky8ASEXh62mU0pSRo034-t3O_1LBPQjhMy-egyfJstVcXCgylpVmBcz_qNUgQoRqLjNE5uxS2SWPYnYx';
+// const YELP_API_KEY =
+//   'ipKA6BcqyQsxDzeWShMICf-disTX4I_aCR6-Wxm0_fpX3ozQky8ASEXh62mU0pSRo034-t3O_1LBPQjhMy-egyfJstVcXCgylpVmBcz_qNUgQoRqLjNE5uxS2SWPYnYx';
 
-export default function Home() {
+const YELP_API_KEY =`_fRSDQRtWqhFaOLcmeDnmer3SLgOQNBMDtsagNHb-4UXN7bjq0GjTIwcTuWWKlKVeIcvwVICodaB8z35cgsRLXy45VS_YFVWyP9gNgbaYsiU4KbeKVJqMnqgjLOUYnYx`
+
+export default function Home({navigation}) {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const [city, setCity] = useState('Hollywood');
   const [activeTab, setActiveTab] = useState('Delivery');
@@ -36,7 +38,7 @@ export default function Home() {
       );
   };
   useEffect(() => {
-    getRestaurantsFromYelp();
+   getRestaurantsFromYelp();
   }, [city, activeTab]);
   return (
     <SafeAreaView style={styles.headerHome}>
@@ -47,7 +49,7 @@ export default function Home() {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantData={restaurantData} />
+        <RestaurantItems restaurantData={restaurantData} navigation={navigation}/>
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />

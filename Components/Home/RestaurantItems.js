@@ -2,6 +2,7 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import RestaurantImage from './RestaurantImage';
 import RestaurantInfo from './RestaurantInfo';
+// import RestaurantDetails from '../../Screens/RestaurantDetails';
 
 export const localRestaurants = [
   {
@@ -33,19 +34,28 @@ export const localRestaurants = [
   },
 ];
 
-export default function RestaurantItems(props) {
-  // console.log('=>press',localRestaurants)
-  return (
-    <TouchableOpacity activeOpacity={1} style={styles.restaurantItemTouch}>
-      {props.restaurantData.map((restaurant, index) => (
-        //console.log('===>',restaurant.image_url)}
+export default function RestaurantItems({navigation, ...props}) {
 
-        <View key={index} style={styles.restaurantItemDiv}>
+  return (
+    <> 
+    {props.restaurantData.map ((restaurant,index)=>(
+      <TouchableOpacity key={index} activeOpacity={1} style={styles.restaurantItemTouch}
+      onPress ={()=> navigation.navigate('RestaurantDetails',
+      {
+        name:restaurant.name,
+        image:restaurant.image_url,
+        price:restaurant.price,
+        reviews:restaurant.reviews_count,
+        rating:restaurant.rating,
+        categories:restaurant.categories,
+      })}>
+        <View style={styles.restaurantItemDiv}>
           <RestaurantImage image={restaurant.image_url} />
           <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
         </View>
+        </TouchableOpacity>
       ))}
-    </TouchableOpacity>
+    </>
   );
 }
 
