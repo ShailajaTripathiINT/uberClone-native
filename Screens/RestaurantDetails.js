@@ -3,6 +3,7 @@ import React from 'react';
 import About from '../Components/RestaurantDetails/About';
 import { Divider } from 'react-native-elements';
 import MenuItem from '../Components/RestaurantDetails/MenuItem';
+import ViewCart from '../Components/RestaurantDetails/ViewCart';
 
 const RestaurantDetails = ({ route, navigation }) => {
   return (
@@ -11,6 +12,7 @@ const RestaurantDetails = ({ route, navigation }) => {
       <Divider width={1.8} style={styles.aboutRestaurant} />
       
       <MenuItem />
+      <ViewCart navigation={navigation} restaurantName = {route.params.name}/>
     </>
     
   );
