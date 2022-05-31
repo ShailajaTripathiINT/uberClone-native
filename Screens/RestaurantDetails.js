@@ -7,14 +7,13 @@ import ViewCart from '../Components/RestaurantDetails/ViewCart';
 
 const RestaurantDetails = ({ route, navigation }) => {
   return (
-  < >
+  <>
       <About  routes={route}/>
       <Divider width={1.8} style={styles.aboutRestaurant} />
-      
       <MenuItem />
       <ViewCart navigation={navigation} restaurantName = {route.params.name}/>
     </>
-    
+      
   );
 };
 

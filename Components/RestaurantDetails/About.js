@@ -4,21 +4,21 @@ import RestaurantImage from './RestaurantImage';
 import RestaurantName from './RestaurantName';
 import RestaurantDescription from './RestaurantDescription';
 
-const yelpRestaurantapi = {
-  name: 'Farmhouse Kitchen Thai cuisine',
-  price: '$$',
-  reviews: '1500',
-  rating: 4.5,
-  image:
-    'https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg',
-  categories: [
-    {title: 'Indian'},
-    {title: 'Comfort Food'},
-    {title: 'coffee'},
-    {title: 'Ice-cream'},
-    {title: 'snacks'},
-  ],
-};
+// const yelpRestaurantapi = {
+//   name: 'Farmhouse Kitchen Thai cuisine',
+//   price: '$$',
+//   reviews: '1500',
+//   rating: 4.5,
+//   image:
+//     'https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg',
+//   categories: [
+//     {title: 'Indian'},
+//     {title: 'Comfort Food'},
+//     {title: 'coffee'},
+//     {title: 'Ice-cream'},
+//     {title: 'snacks'},
+//   ],
+// };
 
 const About =(props) => {
   const {name, price, reviews, rating, image, categories} = props.routes.params;

@@ -10,6 +10,7 @@ export default function Searchbar({cityHandler}) {
   return (
     <View style={styles.searchView}>
       <GooglePlacesAutocomplete
+
         //---------------------------------------
         //Google places api:
         // query={{key:'AtIJQb4r2zOEGWwX8I3IR6gaW-fFbj0cd25xHUd6mVtWRQH5htMiCEg60xM63aXd'}}
@@ -19,6 +20,7 @@ export default function Searchbar({cityHandler}) {
         //   cityHandler(city);
         // }}
         ///-------------------------------------------------
+        
         placeholder="Search"
         style={styles.searchBorder}
         renderLeftButton={() => (
