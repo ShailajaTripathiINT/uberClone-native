@@ -48,16 +48,15 @@ const foods = [
 
 const MenuItem = ({restaurantName}) => {
   const dispatch = useDispatch();
-  console.log("foods menu")
+  console.log('foods menu');
 
-  const selectItem = (item) => {
-    console.log("food",item)
+  const selectItem = item => {
+    console.log('food', item);
     dispatch({
-      type: "ADD_TO_CART",
-      payload: {...item, restaurantName:restaurantName},
-    })
-  }
-  
+      type: 'ADD_TO_CART',
+      payload: {...item, restaurantName: restaurantName},
+    });
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -67,7 +66,7 @@ const MenuItem = ({restaurantName}) => {
             <BouncyCheckbox
               iconStyle={{borderRadius: 0, borderColor: 'lightgrey'}}
               fillColor="green"
-               onPress={()=>selectItem(food)}
+              onPress={() => selectItem(food)}
             />
             <FoodInfo food={food} />
             <FoodImage food={food} />

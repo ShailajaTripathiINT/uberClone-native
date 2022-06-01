@@ -20,15 +20,15 @@ import RestaurantDescription from './RestaurantDescription';
 //   ],
 // };
 
-const About =(props) => {
+const About = props => {
   const {name, price, reviews, rating, image, categories} = props.routes.params;
 
-  console.log("reviews",props.routes);
+  console.log('reviews', props.routes);
 
   const formattedCategories = categories.map(cat => cat.title).join(' • ');
 
   const description = `${formattedCategories} ${
-    price ? " • " + price+ ' 20' : ""
+    price ? ' • ' + price + ' 20' : ''
   } • 🎫 • ${rating} ⭐ (1500+)`;
   return (
     <View>
