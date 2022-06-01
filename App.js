@@ -1,10 +1,10 @@
 import React from 'react';
-import RootNavigation from './navigation'
+import RootNavigation from './Navigation'
 
 export default function App() {
 
  return (
-<RootNavigation />
+   <RootNavigation />
  );
 
 }

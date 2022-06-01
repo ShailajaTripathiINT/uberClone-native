@@ -4,6 +4,8 @@ import FoodInfo from './FoodInfo';
 import FoodImage from './FoodImage';
 import {Divider} from 'react-native-elements';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {useDispatch} from 'react-redux';
+
 const foods = [
   {
     title: 'Lasagna',
@@ -44,17 +46,37 @@ const foods = [
   },
 ];
 
-const MenuItem = () => {
+const MenuItem = ({restaurantName}) => {
+  const dispatch = useDispatch();
+  console.log("foods menu")
+
+  const selectItem = (item) => {
+    console.log("food",item)
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {...item, restaurantName:restaurantName},
+    })
+  }
+  
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {foods.map((food, index) => (
         <View key={index}>
           <View style={styles.MenuItem}>
-          <BouncyCheckbox iconStyle={{borderRadius:0,borderColor:'lightgrey'}} fillColor='green'/>
+            <BouncyCheckbox
+              iconStyle={{borderRadius: 0, borderColor: 'lightgrey'}}
+              fillColor="green"
+               onPress={()=>selectItem(food)}
+            />
             <FoodInfo food={food} />
             <FoodImage food={food} />
           </View>
-          <Divider width={0.5} orientation ='vertical' style= {styles.MenuDivider}/>
+          <Divider
+            width={0.5}
+            orientation="vertical"
+            style={styles.MenuDivider}
+          />
         </View>
       ))}
     </ScrollView>
@@ -69,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 20,
   },
-  MenuDivider:{
-    marginHorizontal:20, }
+  MenuDivider: {
+    marginHorizontal: 20,
+  },
 });
