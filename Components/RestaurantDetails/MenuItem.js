@@ -50,11 +50,11 @@ const MenuItem = ({restaurantName}) => {
   const dispatch = useDispatch();
   console.log('foods menu');
 
-  const selectItem = item => {
+  const selectItem = (item,checkboxValue) => {
     console.log('food', item);
     dispatch({
       type: 'ADD_TO_CART',
-      payload: {...item, restaurantName: restaurantName},
+      payload: {...item, restaurantName: restaurantName, checkboxValue: checkboxValue,},
     });
   };
 
@@ -66,7 +66,7 @@ const MenuItem = ({restaurantName}) => {
             <BouncyCheckbox
               iconStyle={{borderRadius: 0, borderColor: 'lightgrey'}}
               fillColor="green"
-              onPress={() => selectItem(food)}
+              onPress={(checkboxValue) => selectItem(food, checkboxValue)}
             />
             <FoodInfo food={food} />
             <FoodImage food={food} />
