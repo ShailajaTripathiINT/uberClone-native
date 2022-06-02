@@ -5,7 +5,7 @@ import {Divider} from 'react-native-elements';
 import MenuItem from '../Components/RestaurantDetails/MenuItem';
 import ViewCart from '../Components/RestaurantDetails/ViewCart';
 
-const RestaurantDetails = ({route, navigation}) => {
+ const RestaurantDetailsScreen = ({route, navigation}) => {
   return (
     <>
       <About routes={route} />
@@ -16,7 +16,7 @@ const RestaurantDetails = ({route, navigation}) => {
   );
 };
 
-export default RestaurantDetails;
+export default RestaurantDetailsScreen;
 const styles = StyleSheet.create({
   aboutRestaurant: {
     marginVertical: 20,

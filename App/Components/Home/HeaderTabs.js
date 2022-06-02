@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import HeaderButton from './HeaderButton';
 
-const HeaderTabs = props => {
+export default function HeaderTabs(props) {
   return (
     <View style={styles.HeaderButton}>
       <HeaderButton
@@ -17,9 +17,7 @@ const HeaderTabs = props => {
       />
     </View>
   );
-};
-
-export default HeaderTabs;
+}
 
 const styles = StyleSheet.create({
   HeaderButton: {

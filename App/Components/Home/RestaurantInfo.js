@@ -1,42 +1,37 @@
-import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-
+import {View, Text, StyleSheet} from 'react-native';
+import { Colors } from '../../Utils/Styles/styles';
 export default function RestaurantInfo(props) {
   return (
-    <View style={styles.resturantImgView}>
-      {/* left section */}
+    <View style={styles.restaurantImgView}>
       <View>
-        <Text style={styles.resturantTitle}>{props.name}</Text>
-        <Text style={styles.resturantTime}>30-45 min</Text>
+        <Text style={styles.restaurantTitle}>{props.name}</Text>
+        <Text style={styles.restaurantTime}>30-45 min</Text>
       </View>
-
-      {/*right section */}
-
-      <View style={styles.resturantRating}>
+      <View style={styles.restaurantRating}>
         <Text>{props.rating}</Text>
       </View>
-      {/* ----------- */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  resturantImgView: {
+  restaurantImgView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 10,
   },
-  resturantTitle: {
+  restaurantTitle: {
     fontSize: 15,
     fontWeight: 'bold',
   },
-  resturantTime: {
+  restaurantTime: {
     fontSize: 13,
     color: 'grey',
   },
-  resturantRating: {
-    backgroundColor: '#eee',
+  restaurantRating: {
+    backgroundColor: Colors.primary600,
     height: 30,
     width: 30,
     alignItems: 'center',

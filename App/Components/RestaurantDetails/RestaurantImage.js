@@ -1,15 +1,13 @@
-import {View, Image, StyleSheet} from 'react-native';
 import React from 'react';
+import {Image, StyleSheet} from 'react-native';
 
-const RestaurantImage = props => {
+export default function RestaurantImage(props) {
   return (
-    <View>
+    <>
       <Image source={{uri: props.image}} style={styles.RestaurantImage} />
-    </View>
+    </>
   );
-};
-
-export default RestaurantImage;
+}
 
 const styles = StyleSheet.create({
   RestaurantImage: {

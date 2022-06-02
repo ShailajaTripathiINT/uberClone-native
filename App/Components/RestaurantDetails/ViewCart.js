@@ -1,8 +1,9 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
+import { Colors } from '../../Utils/Styles/styles';
 
-const ViewCart = () => {
+export default function ViewCart() {
   const {items, restaurantName} = useSelector(
     state => state.cartReducer.selectedItems,
   );
@@ -15,21 +16,24 @@ const ViewCart = () => {
     style: 'currency',
     currency: 'USD',
   });
-  console.log(totalUSD)
+  console.log(totalUSD);
   return (
-    <View style={styles.viewCartContainer}>
-      <View style={styles.viewCartBox}>
-        <TouchableOpacity style={styles.viewCartBtn}>
-          <View>
-            <Text style={styles.viewCartText}>View Cart</Text>
+    <>
+      {total ? (
+        <View style={styles.viewCartContainer}>
+          <View style={styles.viewCartBox}>
+            <TouchableOpacity style={styles.viewCartBtn}>
+              <Text style={styles.viewCartText}>View Cart </Text>
+              <Text style={styles.viewCartPrice}>${totalUSD}</Text>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
-    </View>
+        </View>
+      ) : (
+        <></>
+      )}
+    </>
   );
-};
-
-export default ViewCart;
+}
 
 const styles = StyleSheet.create({
   viewCartContainer: {
@@ -48,15 +52,23 @@ const styles = StyleSheet.create({
   },
   viewCartBtn: {
     marginTop: 20,
-    backgroundColor: 'black',
+    backgroundColor: Colors.primary700,
     alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     padding: 13,
     borderRadius: 30,
     width: 300,
     position: 'relative',
   },
   viewCartText: {
-    color: 'white',
+    color: Colors.primary500,
+    fontSize: 20,
+    marginRight: 30,
+  },
+  viewCartPrice: {
+    color: Colors.primary500,
     fontSize: 20,
   },
 });

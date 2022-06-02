@@ -1,15 +1,13 @@
-import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import {Text, StyleSheet} from 'react-native';
 
-const RestaurantDescription = props => {
+export default function RestaurantDescription(props) {
   return (
-    <View>
+    <>
       <Text style={styles.RestaurantDescription}>{props.description}</Text>
-    </View>
+    </>
   );
-};
-
-export default RestaurantDescription;
+}
 
 const styles = StyleSheet.create({
   RestaurantDescription: {

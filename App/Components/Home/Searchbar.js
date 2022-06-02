@@ -1,16 +1,13 @@
-import {View, StyleSheet, Text} from 'react-native';
 import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
-// AIzaSyCVwikBe3YbXXLN5qCLGSyFE_C-fGYkPR0
-
+import { Colors } from '../../Utils/Styles/styles';
 export default function Searchbar({cityHandler}) {
   return (
     <View style={styles.searchView}>
       <GooglePlacesAutocomplete
-
         //---------------------------------------
         //Google places api:
         // query={{key:'AtIJQb4r2zOEGWwX8I3IR6gaW-fFbj0cd25xHUd6mVtWRQH5htMiCEg60xM63aXd'}}
@@ -20,7 +17,7 @@ export default function Searchbar({cityHandler}) {
         //   cityHandler(city);
         // }}
         ///-------------------------------------------------
-        
+
         placeholder="Search"
         style={styles.searchBorder}
         renderLeftButton={() => (
@@ -46,13 +43,13 @@ const styles = StyleSheet.create({
   },
   searchBorder: {
     textInput: {
-      backgroundColor: '#eee',
+      backgroundColor:Colors.primary600,
       borderRadius: 20,
       fontWeight: '700',
       marginTop: 7,
     },
     textInputContainer: {
-      backgroundColor: '#eee',
+      backgroundColor: Colors.primary600,
       borderRadius: 50,
       flexDirection: 'row',
       alignItems: 'center',
@@ -65,7 +62,7 @@ const styles = StyleSheet.create({
   searchRight: {
     flexDirection: 'row',
     marginRight: 8,
-    backgroundColor: 'white',
+    backgroundColor: Colors.primary500,
     padding: 9,
     borderRadius: 30,
     alignItems: 'center',

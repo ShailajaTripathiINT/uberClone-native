@@ -1,26 +1,27 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { Colors } from '../../Utils/Styles/styles';
 
-const HeaderButton = props => {
+export default function HeaderButton(props) {
   return (
-    <View>
+    <>
       <TouchableOpacity
         style={{
           ...styles.touchable,
-          backgroundColor: props.activeTab === props.text ? 'black' : 'white',
+          backgroundColor: props.activeTab === props.text ? Colors.primary700 : Colors.primary500,
         }}
         onPress={() => props.setActiveTab(props.text)}>
         <Text
           style={{
             ...styles.propsText,
-            color: props.activeTab === props.text ? 'white' : 'black',
+            color: props.activeTab === props.text ? Colors.primary500 :Colors.primary700,
           }}>
           {props.text}
         </Text>
       </TouchableOpacity>
-    </View>
+    </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   touchable: {
@@ -33,5 +34,3 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
 });
-
-export default HeaderButton;

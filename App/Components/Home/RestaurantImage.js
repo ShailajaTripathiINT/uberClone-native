@@ -21,8 +21,6 @@ export default function RestaurantImage(props) {
           <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
         )}
       </TouchableOpacity>
-
-      {/*new component is here */}
     </>
   );
 }
@@ -36,6 +34,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: 20,
-    // backgroundColor:"red"
   },
 });
