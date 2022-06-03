@@ -9,7 +9,8 @@ export default function About(props) {
   const description = `${formattedCategories} ${
     price ? ' • ' + price + ' 20' : ''
   } • 🎫 • ${rating} ⭐ (1500+)`;
-
+ //₹
+ //about,foodinfo,viewcart
   return (
     <>
       <RestaurantImage image={image} />
@@ -18,5 +19,5 @@ export default function About(props) {
     </>
   );
 }
-
++
 About;
