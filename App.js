@@ -1,10 +1,13 @@
-import React from 'react';
-import RootNavigation from './App/Navigation/Navigation'
+import React, {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
+import HomeNavigation from './App/Navigation/HomeNavigation';
 
-export default function App() {
 
- return (
-   <RootNavigation />
- );
-
-}
+const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+  
+  return <HomeNavigation />;
+};
+export default App;

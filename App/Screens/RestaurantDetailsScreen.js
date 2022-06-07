@@ -6,6 +6,7 @@ import MenuItem from '../Components/RestaurantDetails/MenuItem';
 import ViewCart from '../Components/RestaurantDetails/ViewCart';
 
  const RestaurantDetailsScreen = ({route, navigation}) => {
+   console.log("res")
   return (
     <>
       <About routes={route} />

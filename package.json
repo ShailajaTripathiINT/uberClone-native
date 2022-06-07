@@ -7,31 +7,32 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "generate": "npx react-native generate-bootsplash ./src/assets/original_icon.png --background-color=2EE59D   --logo-width=100 --assets-path=./src/assets --flavor=main"
   },
-  
   "dependencies": {
+    "@react-native-firebase/app": "^14.11.0",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/stack": "^6.2.1",
+    "firebase": "^9.8.2",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-bouncy-checkbox": "^2.1.10",
     "react-native-elements": "^3.4.2",
-    "react-native-gesture-handler": "^2.4.1",
+    "react-native-gesture-handler": "^2.4.2",
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-reanimated": "^2.8.0",
-    "react-native-safe-area-context": "^4.2.5",
+    "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.13.1",
+    "react-native-splash-screen": "^3.3.0",
     "react-native-vector-icons": "^9.1.0",
     "react-redux": "^8.0.2",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
     "redux": "^4.2.0",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/runtime": "^7.18.0",
-    "@react-native-community/eslint-config": "^3.0.2",
     "babel-jest": "^28.1.0",
     "eslint": "^8.16.0",
     "jest": "^28.1.0",

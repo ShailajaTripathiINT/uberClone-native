@@ -31,7 +31,6 @@ const addOrderToFirebase = () =>{
   setModalVisible(false);
 };
 
-
   // another component
   const checkoutModalContent = () => {
     return (
@@ -50,7 +49,9 @@ const addOrderToFirebase = () =>{
             <View style={styles.checkoutView}>
               <TouchableOpacity style={styles.checkoutBtn}
               onPress={()=>
+               
                 addOrderToFirebase()
+               
               }
     >
                 <Text style={styles.checkoutText}>checkout</Text>

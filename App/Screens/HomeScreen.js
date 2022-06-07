@@ -35,7 +35,6 @@ export default function HomeScreen({navigation}) {
         ),
       );
   };
-
   return (
     <SafeAreaView style={styles.headerHome}>
       <View style={styles.viewHome}>
@@ -58,7 +57,7 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   headerHome: {
     backgroundColor: Colors.primary600,
-    flex: 1,
+   
   },
   viewHome: {
     backgroundColor:  Colors.primary500,
