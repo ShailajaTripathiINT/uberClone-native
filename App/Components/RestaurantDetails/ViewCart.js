@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import {useSelector} from 'react-redux';
 import {Colors} from '../../Utils/Styles/styles';
 import OrderItem from './OrderItem';
-import firebase from '../../Firebase';
+// import firebase from '../../Firebase';
 
 export default function ViewCart() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,15 +21,15 @@ export default function ViewCart() {
   });
   
 //another function
-const addOrderToFirebase = () =>{
-  const db = firebase.firestore();
-  db.collection('orders').add({
-    items:items,
-    restaurantName:restaurantName,
-    createdAt:firebase.firestore.FieldValue.serverTimestamp(),
-  });
-  setModalVisible(false);
-};
+// const addOrderToFirebase = () =>{
+//   const db = firebase.firestore();
+//   db.collection('orders').add({
+//     items:items,
+//     restaurantName:restaurantName,
+//     createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+//   });
+//   setModalVisible(false);
+// };
 
   // another component
   const checkoutModalContent = () => {

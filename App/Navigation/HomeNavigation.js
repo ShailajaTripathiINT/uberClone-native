@@ -3,17 +3,17 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import configureStore from '../Redux/Store';
-import HomeScreen from '../Screens/HomeScreen';
-import RestaurantDetailsScreen from '../Screens/RestaurantDetailsScreen';
-
+import HomeScreen from '../Screens/Home/HomeScreen';
+import RestaurantDetailsScreen from '../Screens//Home/RestaurantDetailsScreen';
+import CategoriesScreen from '../Screens/Home/CategoriesScreen';
 const store = configureStore();
 
 export default function HomeNavigation() {
   const Stack = createStackNavigator();
-console.log("root")
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
+    
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
@@ -24,8 +24,12 @@ console.log("root")
             name="RestaurantDetailsScreen"
             component={RestaurantDetailsScreen}
           />
+          <Stack.Screen
+            name="CategoriesScreen"
+            component={CategoriesScreen}
+          />
         </Stack.Navigator>
-      </NavigationContainer>
+     
     </Provider>
   );
 }

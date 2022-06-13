@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
     margin: 10,
     marginHorizontal: 30,
     justifyContent: 'space-between',
+    
   },
 });

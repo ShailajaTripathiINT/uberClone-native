@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
-import About from '../Components/RestaurantDetails/About';
+import About from '../../Components/RestaurantDetails/About';
 import {Divider} from 'react-native-elements';
-import MenuItem from '../Components/RestaurantDetails/MenuItem';
-import ViewCart from '../Components/RestaurantDetails/ViewCart';
+import MenuItem from '../../Components/RestaurantDetails/MenuItem';
+import ViewCart from '../../Components/RestaurantDetails/ViewCart';
 
  const RestaurantDetailsScreen = ({route, navigation}) => {
    console.log("res")
+   
   return (
     <>
       <About routes={route} />

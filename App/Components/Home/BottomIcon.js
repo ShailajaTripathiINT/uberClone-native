@@ -9,7 +9,7 @@ export default function BottomIcon(props) {
       <Text>{props.text}</Text>
     </TouchableOpacity>
   );
-}
+} 
 
 const styles = StyleSheet.create({
   BottomIcon: {

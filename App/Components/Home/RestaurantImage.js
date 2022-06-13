@@ -28,7 +28,7 @@ export default function RestaurantImage(props) {
 const styles = StyleSheet.create({
   restaurantImage: {
     width: '100%',
-    height: 180,
+    height: 150,
   },
   heartIcon: {
     position: 'absolute',

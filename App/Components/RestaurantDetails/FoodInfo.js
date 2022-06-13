@@ -6,6 +6,7 @@ const FoodInfo = props => {
     <View style={styles.foodInfo}>
       <Text style={styles.titleStyle}>{props.food.title}</Text>
       <Text>{props.food.description}</Text>
+      {console.log("props.food.price",props.food.price)}
       <Text>{props.food.price}</Text>
     </View>
   );

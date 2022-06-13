@@ -1,4 +1,4 @@
- export const YELP_API_KEY =`_fRSDQRtWqhFaOLcmeDnmer3SLgOQNBMDtsagNHb-4UXN7bjq0GjTIwcTuWWKlKVeIcvwVICodaB8z35cgsRLXy45VS_YFVWyP9gNgbaYsiU4KbeKVJqMnqgjLOUYnYx`;
+ export const YELP_API_KEY =`eL_Y00KKSkBsTPL_O7ZaT2xjHyaQKiDApw4qqnK_tnlDsMKfu9AbxfLpCzfjPup7iz6teM_0bKtVx1NPAsQFS4jAhnm0JCBhZKF4JjD8zhRqg2kIzq7DpZFlBz6gYnYx`;
 
  export const Items = [
     {
@@ -100,4 +100,3 @@ export const Foods = [
       'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
   },
 ];
-  

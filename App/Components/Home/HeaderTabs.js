@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
   HeaderButton: {
     flexDirection: 'row',
     alignSelf: 'center',
+    
   },
 });

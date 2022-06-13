@@ -3,7 +3,7 @@ import {View, StyleSheet, Text} from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { Colors } from '../../Utils/Styles/styles';
+import {Colors} from '../../Utils/Styles/styles';
 export default function Searchbar({cityHandler}) {
   return (
     <View style={styles.searchView}>
@@ -18,11 +18,16 @@ export default function Searchbar({cityHandler}) {
         // }}
         ///-------------------------------------------------
 
+        minLength={4}
+        autoFocus={true}
+        listViewDisplayed="auto"
+        returnKeyType={'search'}
+        fetchDetails={true}
         placeholder="Search"
         style={styles.searchBorder}
         renderLeftButton={() => (
           <View style={styles.searchIcon}>
-            <Ionicons name="location-sharp" size={24} />
+            <Ionicons name="location-sharp" size={22} />
           </View>
         )}
         renderRightButton={() => (
@@ -38,34 +43,40 @@ export default function Searchbar({cityHandler}) {
 
 const styles = StyleSheet.create({
   searchView: {
-    marginTop: 15,
+    marginTop: 10,
     flexDirection: 'row',
+    elevation: 4,
+    backgroundColor: 'white',
+    borderRadius: 10,
   },
   searchBorder: {
     textInput: {
-      backgroundColor:Colors.primary600,
+      backgroundColor: Colors.primary600,
+
       borderRadius: 20,
-      fontWeight: '700',
+      fontWeight: '400',
       marginTop: 7,
     },
     textInputContainer: {
       backgroundColor: Colors.primary600,
-      borderRadius: 50,
+
+      borderRadius: 10,
       flexDirection: 'row',
       alignItems: 'center',
-      marginRight: 10,
+      marginRight: 5,
     },
   },
   searchIcon: {
-    marginLeft: 10,
+    margin: 10,
   },
   searchRight: {
     flexDirection: 'row',
-    marginRight: 8,
+    marginHorizontal: 8,
     backgroundColor: Colors.primary500,
-    padding: 9,
-    borderRadius: 30,
+    borderRadius: 20,
     alignItems: 'center',
+    flex: 0.4,
+    justifyContent: 'center',
   },
   antdesign: {
     marginRight: 6,

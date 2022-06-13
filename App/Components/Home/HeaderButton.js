@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 16,
     borderRadius: 30,
+   
   },
   propsText: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: '900',
   },
 });

@@ -9,6 +9,6 @@
 //   appId: "1:115750357117:web:ca1f9572fc2c46a0d68914"
 // };
 // const app = initializeApp(firebaseConfig);
-// console.log(app)
+
 
 //   export default firebase;
