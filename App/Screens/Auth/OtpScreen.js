@@ -35,7 +35,7 @@ const OtpScreen = ({navigation}) => {
 
       <Text style={styles.otp}>{OTP}</Text>
 
-      {/* ---------------------------------------------------- */}
+      {/* --------------------------------------------------- */}
 
       <Text style={styles.forgotHead}>Enter OTP sent to Your Mobile Phone</Text>
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: 'green',
     padding: 12,
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: '#DBDCDE',
   },
   textBtn: {

@@ -37,13 +37,14 @@ const Homescreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       SetTimer(false);
-    }, 1000);
+    }, 2000);
   }, []);
   useEffect(() => {
     getRestaurantsFromYelp();
   }, [city, activeTab]);
 
   return (
+
     <SafeAreaView style={styles.homeContainer}>
       <View style={styles.headerContainer}>
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -66,6 +67,7 @@ const Homescreen = ({navigation}) => {
               autoPlay
               speed={3}
             />
+            
           </View>
         ) : (
           <RestaurantItems

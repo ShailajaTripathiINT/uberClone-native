@@ -32,6 +32,7 @@ export default function ViewCart() {
 // };
 
   // another component
+  
   const checkoutModalContent = () => {
     return (
       <>
@@ -48,11 +49,11 @@ export default function ViewCart() {
             </View>
             <View style={styles.checkoutView}>
               <TouchableOpacity style={styles.checkoutBtn}
-              onPress={()=>
+              // onPress={()=>
                
-                addOrderToFirebase()
+              //   addOrderToFirebase()        
                
-              }
+              // }
     >
                 <Text style={styles.checkoutText}>checkout</Text>
                 <Text style={styles.checkoutPrice}>${total ?totalUSD:""}</Text>

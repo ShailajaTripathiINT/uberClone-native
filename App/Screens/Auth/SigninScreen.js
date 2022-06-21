@@ -10,6 +10,7 @@ const SigninScreen = ({navigation}) => {
     <View style={styles.mainContainer}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <Form navigation={navigation} title="SignIn" />
+    
       </ImageBackground>
     </View>
   );

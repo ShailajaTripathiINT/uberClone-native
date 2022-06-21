@@ -8,14 +8,15 @@ const ForgotpwdScreen = ({navigation}) => {
       <Text style={styles.forgotHead}>
         Enter Your Mobile Number to Send an OTP
       </Text>
+      
       <PhoneInput
         defaultCode="IN"
         layout="first"
         countryPickerProps={{withAlphaFilter: true}}
         autoFocus
       />
-
       {/* ---------------------------------------------------------- */}
+
       <TouchableOpacity style={styles.loginBtn}>
         <Text
           style={styles.textBtn}

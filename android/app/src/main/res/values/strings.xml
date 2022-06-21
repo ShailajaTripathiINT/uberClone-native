@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">uber</string>
+    
+<string name="facebook_app_id">3292333591087926</string>
+<string name="fb_login_protocol_scheme">fb3292333591087926</string>
+<string name="facebook_client_token">77ee91bce610b4fa5de8729932cc4879</string>
+
+
 </resources>

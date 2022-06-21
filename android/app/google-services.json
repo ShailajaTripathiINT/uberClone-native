@@ -7,9 +7,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:115750357117:android:6dca4b1164419969d68914",
+        "mobilesdk_app_id": "1:115750357117:android:093369b70fa09e8fd68914",
         "android_client_info": {
           "package_name": "com.uber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115750357117-ghv8ceepio8rqjgdfv376lqbtk1iq1i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZTs9u74y9IvL6aeSPTxude1vvoe1-hPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115750357117-ghv8ceepio8rqjgdfv376lqbtk1iq1i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115750357117:android:45fb525eb59f661bd68914",
+        "android_client_info": {
+          "package_name": "com.uberApp"
         }
       },
       "oauth_client": [

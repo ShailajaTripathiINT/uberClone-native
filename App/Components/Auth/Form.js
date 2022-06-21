@@ -7,71 +7,192 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
+import {Formik, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
 
-const Form = props => {
+const Form = ({ title}) => {
+  const navigation=useNavigation();
+  const validationSchema = Yup.object({
+    fname: Yup.string().required('Please Enter Full Name'),
+    pswd: Yup.string()
+      .required('Please Enter your password')
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
+      ),
+    phone: Yup.string()
+      .required('Invalid Indian number')
+      .matches(/(\+91\ )[6-9]{1}[0-9 ]{4}[0-9 ]{4}[0-9]{3}/, {
+        excludeEmptyString: false,
+      }),
+  });
+  const renderError = message => (<View style={{alignItems:'center'}}>
+  <Text style={{color:'red'}}>{message}</Text>
+  </View>
+
+
+  );
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '115750357117-ghv8ceepio8rqjgdfv376lqbtk1iq1i6.apps.googleusercontent.com',
+    });
+  }, [data]);
+
+  async function onGoogleButtonPress() {
+    console.log('pressed');
+    // Get the users ID token
+    const {idToken} = await GoogleSignin.signIn();
+    console.log('===>idtoken', idToken);
+
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    console.log('googlecredential', googleCredential);
+    // Sign-in the user with the credential
+    const user_sign_in = auth().signInWithCredential(googleCredential);
+    console.log('usersign', user_sign_in);
+    user_sign_in
+      .then(user => {
+        console.log('user.user.displayName', user.user.displayName);
+        setData({
+          name: user.user.displayName,
+          email: user.user.email,
+          image: user.user.photoURL,
+        });
+        navigation.navigate('HomeNavigation');
+      })
+      .catch(err => {
+        console.log('err.message', err.message);
+      });
+    console.log('data.name', data.name);
+  }
+  function logout() {
+    auth()
+      .signOut()
+      .then(() => {
+        console.log('User signed out!');
+        setData([]);
+      });
+  }
+
   return (
     <ScrollView style={styles.formContainer}>
-      <Text style={styles.Head}> Welcome to {props.title} Page </Text>
-      <Text style={styles.Text}>Please fill for deatils for {props.title}</Text>
+      <Text style={styles.Head}> Welcome to {title} Page </Text>
+      <Text style={styles.Text}>Please provide us deatils for {title}</Text>
       <View style={styles.formSection}>
-        {props.title === 'SignIn' ? (
-          <>
-            <TextInput
-              placeholder="Mobile Number"
-              keyboardType="numeric"
-              placeholderTextColor="#777"
-              style={styles.input}
-            />
-            <TextInput
-              placeholder="Password"
-              placeholderTextColor="#777"
-              returnKeyType="go"
-              secureTextEntry
-              autoCorrect={false}
-              keyboardType="default"
-              style={styles.input}
-            />
-          </>
-        ) : (
-          <>
-            <TextInput
-              placeholder="Full Name"
-              placeholderTextColor="#777"
-              returnKeyType="go"
-              secureTextEntry
-              autoCorrect={false}
-              keyboardType="default"
-              style={styles.input}
-            />
-            <TextInput
-              placeholder="Mobile Number"
-              keyboardType="numeric"
-              placeholderTextColor="#777"
-              style={styles.input}
-            />
-            <TextInput
-              placeholder="Set Password"
-              placeholderTextColor="#777"
-              returnKeyType="go"
-              secureTextEntry
-              autoCorrect={false}
-              keyboardType="default"
-              style={styles.input}
-            />
-          </>
-        )}
-        <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={()=>props.navigation.navigate("HomeNavigation")}
-        >
-          <Text style={styles.textBtn}>{props.title}</Text>
-        </TouchableOpacity>
+        <Formik
+          initialValues={{phone: '', pswd: '', fname: ''}}
+          validationSchema={validationSchema}
+          onSubmit={values => console.log('values', values)}>
+          {({handleChange, handleBlur, handleSubmit, values}) => (
+            <>
+              {title === 'SignIn' ? (
+                <>
+                  <TextInput
+                    placeholder="Mobile Number"
+                    keyboardType="numeric"
+                    placeholderTextColor="#777"
+                    style={styles.input}
+                    onChangeText={handleChange('phone')}
+                    onBlur={handleBlur('phone')}
+                    value={values.phone}
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    render={renderError}
+                    style={styles.error}
+                  />
+                  <TextInput
+                    placeholder="Password"
+                    placeholderTextColor="#777"
+                    returnKeyType="go"
+                    secureTextEntry
+                    autoCorrect={false}
+                    keyboardType="default"
+                    style={styles.input}
+                    onChangeText={handleChange('pswd')}
+                    onBlur={handleBlur('pswd')}
+                    value={values.pswd}
+                  />
+                  <ErrorMessage
+                    name="pswd"
+                    render={renderError}
+                    style={styles.error}
+                  />
+                </>
+              ) : (
+                <>
+                  <TextInput
+                    placeholder="Full Name"
+                    placeholderTextColor="#777"
+                    returnKeyType="go"
+                    keyboardType="default"
+                    style={styles.input}
+                    onChangeText={handleChange('fname')}
+                    onBlur={handleBlur('fname')}
+                    value={values.fname}
+                  />
+                  <ErrorMessage
+                    name="fname"
+                    render={renderError}
+                    style={styles.error}
+                  />
+                  <TextInput
+                    placeholder="Mobile Number"
+                    keyboardType="numeric"
+                    placeholderTextColor="#777"
+                    style={styles.input}
+                    onChangeText={handleChange('phone')}
+                    onBlur={handleBlur('phone')}
+                    value={values.phone}
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    render={renderError}
+                    style={styles.error}
+                  />
+                  <TextInput
+                    placeholder="Set Password"
+                    placeholderTextColor="#777"
+                    returnKeyType="go"
+                    secureTextEntry
+                    autoCorrect={false}
+                    keyboardType="default"
+                    style={styles.input}
+                    onChangeText={handleChange('pswd')}
+                    onBlur={handleBlur('pswd')}
+                    value={values.pswd}
+                  />
+                  <ErrorMessage
+                    style={styles.error}
+                    name="pswd"
+                    render={renderError}
+                  />
+                </>
+              )}
+              <TouchableOpacity
+                style={styles.loginBtn}
+                onPress={() => {
+                  handleSubmit();
+                  navigation.navigate('HomeNavigation');
+                }}>
+                <Text style={styles.textBtn}>{title}</Text>
+              </TouchableOpacity>
+            </>
+          )}
+        </Formik>
 
-        {props.title === 'SignIn' ? (
+        {title === 'SignIn' ? (
           <TouchableOpacity
             onPress={() => {
-              props.navigation.navigate('ForgotpwdScreen');
+              navigation.navigate('ForgotpwdScreen');
             }}>
             <Text style={styles.textForgot}>Forgot Your Password ?</Text>
           </TouchableOpacity>
@@ -79,35 +200,62 @@ const Form = props => {
 
         <View style={styles.textSignupDiv}>
           <Text style={styles.textbottom}>
-            {props.title === 'SignIn'
-              ? "Don't have an account ?"
+            {title === 'SignIn'
+              ? "Don't have an account ? "
               : 'Already have an Account ? '}
           </Text>
 
           <TouchableOpacity
             onPress={() => {
               {
-                props.title === 'SignIn'
-                  ?  props.navigation.navigate('SignupScreen')
-                  :  props.navigation.navigate('SigninScreen');
+                title === 'SignIn'
+                  ? navigation.navigate('SignupScreen')
+                  : navigation.navigate('SigninScreen');
               }
             }}>
             <Text style={styles.signup}>
-              {props.title === 'SignIn' ? 'Sign Up' : 'Sign In'}
+              {title === 'SignIn' ? 'Sign Up' : 'Sign In'}
             </Text>
           </TouchableOpacity>
         </View>
 
         <View>
           <View style={styles.icons}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                onGoogleButtonPress().then(() =>
+                  console.log('Signed in with Google!'),
+                )
+              }>
               <Image
                 source={require('../../Assests/Images/google.png')}
                 style={styles.iconImg}
               />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                LoginManager.logInWithPermissions([
+                  'pswd',
+                  'phone',
+                  'fname'
+                ]).then(
+                  function (result) {
+                    if (result.isCancelled) {
+                      alert('SignIn Cancelled ' + JSON.stringify(result));
+                    } else {
+                      alert(
+                        'SignIn success with  permisssions: ' +
+                          result.grantedPermissions.toString(),
+                      );
+                      alert('SignIn Success ' + result.toString());
+                    }
+                  },
+                  function (error) {
+                    alert('SignIn failed with error: ' + error);
+                  },
+                );
+              }}>
               <Image
                 source={require('../../Assests/Images/facebook.png')}
                 style={styles.iconImg}
@@ -118,6 +266,7 @@ const Form = props => {
                 source={require('../../Assests/Images/twitter.png')}
                 style={styles.iconImg}
               />
+             
             </TouchableOpacity>
           </View>
         </View>
@@ -164,7 +313,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.5,
     borderColor: '#DBDCDE',
-    color: '#999',
+    color: 'black',
   },
   loginBtn: {
     margin: 12,
@@ -189,7 +338,6 @@ const styles = StyleSheet.create({
   signup: {
     color: 'green',
   },
-
   icons: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -199,5 +347,10 @@ const styles = StyleSheet.create({
   iconImg: {
     width: 35,
     height: 35,
+  },
+  error: {
+    color: 'red',
+    backgroundColor: 'yellow',
+    marginVertical: 10,
   },
 });
