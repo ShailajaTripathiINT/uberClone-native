@@ -13,7 +13,7 @@ import ViewCart from '../../Components/RestaurantDetails/ViewCart';
       <About routes={route} />
       <Divider width={1.8} style={styles.aboutRestaurant} />
       <MenuItem restaurantName={route.params.name} />
-      <ViewCart navigation={navigation} restaurantName={route.params.name} />
+      <ViewCart navigation={navigation} />
     </>
   );
 };

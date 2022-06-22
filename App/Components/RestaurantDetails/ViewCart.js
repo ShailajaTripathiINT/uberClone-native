@@ -3,11 +3,11 @@ import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import {useSelector} from 'react-redux';
 import {Colors} from '../../Utils/Styles/styles';
 import OrderItem from './OrderItem';
-// import firebase from '../../Firebase';
 
-export default function ViewCart() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const {items, restaurantName} = useSelector(
+
+export default function ViewCart({navigation}) {
+ const [modalVisible, setModalVisible] = useState(false);
+ const {items, restaurantName} = useSelector(
     state => state.cartReducer.selectedItems,
   );
 
@@ -19,20 +19,21 @@ export default function ViewCart() {
     style: 'currency',
     currency: 'USD',
   });
-  
-//another function
-// const addOrderToFirebase = () =>{
-//   const db = firebase.firestore();
-//   db.collection('orders').add({
-//     items:items,
-//     restaurantName:restaurantName,
-//     createdAt:firebase.firestore.FieldValue.serverTimestamp(),
-//   });
-//   setModalVisible(false);
-// };
+
+  //another function
+  // const addOrderToFirebase = () =>{
+  //   const db = firebase.firestore();
+  //   db.collection('orders').add({
+  //     items:items,
+  //     restaurantName:restaurantName,
+  //     createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+  //   });
+  //   setModalVisible(false);
+  //  navigation.navigate("OrderCompleted");
+  // };
 
   // another component
-  
+
   const checkoutModalContent = () => {
     return (
       <>
@@ -48,15 +49,20 @@ export default function ViewCart() {
               <Text>${totalUSD}</Text>
             </View>
             <View style={styles.checkoutView}>
-              <TouchableOpacity style={styles.checkoutBtn}
-              // onPress={()=>
-               
-              //   addOrderToFirebase()        
-               
-              // }
-    >
+              <TouchableOpacity
+                style={styles.checkoutBtn}
+                // onPress={()=>
+
+                //   addOrderToFirebase()
+
+                // }
+                 onPress={() => navigation.navigate('OrderCompleted')}
+               >
                 <Text style={styles.checkoutText}>checkout</Text>
-                <Text style={styles.checkoutPrice}>${total ?totalUSD:""}</Text>
+
+                <Text style={styles.checkoutPrice}>
+                  ${total ? totalUSD : ''}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -173,15 +179,15 @@ const styles = StyleSheet.create({
     width: 300,
     position: 'relative',
   },
-  checkoutText:{
-color:"white",
-fontSize:20,
+  checkoutText: {
+    color: 'white',
+    fontSize: 20,
   },
-  checkoutPrice:{
-    position:"absolute",
-    right:55,
-    color:Colors.primary500,
-    fontSize:15,
-    top:17,
-  }
+  checkoutPrice: {
+    position: 'absolute',
+    right: 55,
+    color: Colors.primary500,
+    fontSize: 15,
+    top: 17,
+  },
 });

@@ -6,6 +6,8 @@ import configureStore from '../Redux/Store';
 import HomeScreen from '../Screens/Home/HomeScreen';
 import RestaurantDetailsScreen from '../Screens//Home/RestaurantDetailsScreen';
 import CategoriesScreen from '../Screens/Home/CategoriesScreen';
+import OrderCompleted from '../Screens/Home/OrderCompleted';
+
 const store = configureStore();
 
 export default function HomeNavigation() {
@@ -28,6 +30,9 @@ export default function HomeNavigation() {
             name="CategoriesScreen"
             component={CategoriesScreen}
           />
+          <Stack.Screen name="OrderCompleted"
+          component={OrderCompleted}/>
+          
         </Stack.Navigator>
      
     </Provider>
